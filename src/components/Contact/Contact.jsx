@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Contact.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
   const [fname, Setfname] = useState("");
@@ -13,6 +14,7 @@ const Contact = () => {
   const [email, Setemail] = useState("");
   const [mobile, Setmobile] = useState("");
   const [message, Setmessage] = useState("");
+  const navigate = useNavigate();
 
   const sentUserdata = async (e) => {
     e.preventDefault();
@@ -47,10 +49,13 @@ const Contact = () => {
           toast.success("Response Sent Successfully!", {
             position: "top-center",
           });
+          navigate("/");
         })
-        .catch((error) => toast.warning("Already Sent a Response",{
-          position:"top-center"
-        }));
+        .catch((error) =>
+          toast.warning("Already Sent a Response", {
+            position: "top-center",
+          })
+        );
     }
   };
   return (
