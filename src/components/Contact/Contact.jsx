@@ -13,6 +13,7 @@ const Contact = () => {
   const [email, Setemail] = useState("");
   const [mobile, Setmobile] = useState("");
   const [message, Setmessage] = useState("");
+
   const sentUserdata = async (e) => {
     e.preventDefault();
 
@@ -33,25 +34,31 @@ const Contact = () => {
         position: "top-center",
       });
     } else {
-      axios
-        .post("https://portfoliobackends-6r0d.onrender.com/contact", {
+      const res = await axios.post(
+        "https://portfoliobackends-6r0d.onrender.com/Contact",
+        {
           fname,
           lname,
           email,
           mobile,
           message,
-        })
+        }
+      );
+      // console.log(res);
 
-        .then((data) => {
-          toast.success("Response Sent Successfully!", {
-            position: "top-center",
-          });
-        })
-        .catch((error) =>
-          toast.warning("Already Sent a Response", {
-            position: "top-center",
-          })
-        );
+      if (res.status === 201) {
+        toast.success("Response Sent Successfully", {
+          position: "top-center",
+        });
+      } else if (res.data === "existed") {
+        toast.warn("Already Sent a Response", {
+          position: "top-center",
+        });
+      } else if (res.data === "error") {
+        toast.success("Response Sent Successfully", {
+          position: "top-center",
+        });
+      }
     }
   };
   return (
