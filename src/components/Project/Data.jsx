@@ -29,12 +29,12 @@ const projectData = [
     demo: "https://main--snazzy-sable-c3684d.netlify.app/",
     Images: "Project/Joke.png",
   },
-  // {
-  //   id: 2,
-  //   projectName: "",
-  //   demo: "",
-  //   Images: "Project/",
-  // },
+  {
+    id: 6,
+    projectName: "Send Email In Nodemailer",
+    demo: "https://main--ajaysentemail.netlify.app/",
+    Images: "Project/SendEmail.png",
+  },
 ];
 
 export default projectData;
