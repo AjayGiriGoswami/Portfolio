@@ -33,28 +33,41 @@ const Contact = () => {
       toast.warning("Invaild Email", {
         position: "top-center",
       });
-    } else {
-      const res = await axios.post(
-        "https://portfoliobackends-6r0d.onrender.com/Contact",
-        {
-          fname,
-          lname,
-          email,
-          mobile,
-          message,
-        }
-      );
-      // console.log(res);
-
-      if (res.status === 201) {
-        toast.success("Response Sent Successfully");
-      } else if (res.data === "existed") {
-        toast.warn("Already Sent a Response");
-      } else if (res.data === "error") {
-        toast.success("Response Sent Successfully");
+    } else if (mobile === "") {
+      toast.error("Please enter the Number", {
+        position: "top-center",
+      });
+    } else if (mobile.length !== 10) {
+      toast.error("Please enter the 10 digit Number", {
+        position: "top-center",
+      });
+    }
+    const res = await axios.post(
+      "https://portfoliobackends-6r0d.onrender.com/Contact",
+      {
+        fname,
+        lname,
+        email,
+        mobile,
+        message,
       }
+    );
+
+    if (res.status === 201) {
+      toast.success("Response Sent Successfully", {
+        position: "top-center",
+      });
+    } else if ((res.data = "require")) {
+      toast.info("Please try after Sometime", {
+        position: "top-center",
+      });
+    } else {
+      toast.info("Please try after Sometime", {
+        position: "top-center",
+      });
     }
   };
+
   return (
     <>
       <div className="container mb-3 contact">
@@ -122,5 +135,4 @@ const Contact = () => {
     </>
   );
 };
-
 export default Contact;
