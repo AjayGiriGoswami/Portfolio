@@ -6,7 +6,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Contact.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
   const [fname, Setfname] = useState("");
@@ -14,7 +13,6 @@ const Contact = () => {
   const [email, Setemail] = useState("");
   const [mobile, Setmobile] = useState("");
   const [message, Setmessage] = useState("");
-  const navigate = useNavigate("");
 
   const sentUserdata = async (e) => {
     e.preventDefault();
@@ -39,7 +37,7 @@ const Contact = () => {
       toast.error("Please enter the Number", {
         position: "top-center",
       });
-    } else if (mobile.length != 10) {
+    } else if (mobile.length !== 10) {
       toast.error("Please enter the 10 digit Number", {
         position: "top-center",
       });
