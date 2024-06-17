@@ -60,7 +60,7 @@ const Contact = () => {
         position: "top-center",
       });
       window.location.reload("/");
-    } else if ((res.data === 202)) {
+    } else if ((res.status === 202)) {
       toast.info("Already Send a Response Successfully", {
         position: "top-center",
       });
