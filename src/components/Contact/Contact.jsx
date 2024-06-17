@@ -62,6 +62,7 @@ const Contact = () => {
       toast.info("Already Send a Response Successfully", {
         position: "top-center",
       });
+        window.location.reload("/");
     } else {
       toast.info("Please try after Sometime", {
         position: "top-center",
