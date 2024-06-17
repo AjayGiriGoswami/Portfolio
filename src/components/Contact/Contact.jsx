@@ -60,8 +60,8 @@ const Contact = () => {
         position: "top-center",
       });
       window.location.reload("/");
-    } else if ((res.data = "require")) {
-      toast.info("Please try after Sometime", {
+    } else if ((res.data === 202)) {
+      toast.info("Already Send a Response Successfully", {
         position: "top-center",
       });
     } else {
